@@ -1,14 +1,12 @@
 <template>
   <div class="container">
     <h1>${message}</h1>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="true" data-interval="5000">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
       <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li repeat.for="image of imagesArray" data-target="#carouselExampleIndicators" data-slide-to="${image.id}" class="${image.id === 0 && 'active'}"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="carousel-item ${image.id === activeImage && 'active'}" repeat.for="image of imagesArray">
+        <div class="carousel-item ${image.id === 0 && 'active'}" repeat.for="image of imagesArray">
           <img class="d-block img-fluid full-width" src="${image.url}" alt="${image.title}">
           <div class="carousel-caption d-none d-md-block">
             <h3>${image.title}</h3>
