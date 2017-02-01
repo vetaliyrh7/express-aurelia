@@ -1,17 +1,10 @@
 <template>
-  <h1>${message}</h1>
-  <br>
-  <h1 if.bind="showAnswers">Users list: </h1>
-  <div repeat.for="answer of requestAnswer">
-     <div if.bind="showAnswers">
-      User name: ${answer.name}
-      <br>
-      User Email: ${answer.email}
-      <br>
-      User age: ${answer.age}
-       <br>
-      Created: ${answer.createdAt}
-      <hr>
-     </div>
-  </div>
+  <require from="./main.css"></require>
+  <require from="./bootstrap.css"></require>
+  <require from="./components/navigation/navigation.html"></require>
+
+  <!--Main data-->
+  <navigation router.bind="router"></navigation>
+  <router-view class="router-view"></router-view>
+
 </template>

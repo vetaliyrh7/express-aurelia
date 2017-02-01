@@ -1,0 +1,42 @@
+<template>
+  <div class="container">
+    <h1>${message}</h1>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="true" data-interval="5000">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item ${image.id === activeImage && 'active'}" repeat.for="image of imagesArray">
+          <img class="d-block img-fluid full-width" src="${image.url}" alt="${image.title}">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>${image.title}</h3>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <br>
+    <h1 if.bind="showAnswers">Users list: </h1>
+    <div repeat.for="answer of requestAnswer">
+      <div if.bind="showAnswers">
+        User name: ${answer.name}
+        <br>
+        User Email: ${answer.email}
+        <br>
+        User age: ${answer.age}
+        <br>
+        Created: ${answer.createdAt}
+        <hr>
+      </div>
+    </div>
+  </div>
+</template>
